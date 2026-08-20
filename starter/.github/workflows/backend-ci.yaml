@@ -7,7 +7,7 @@ on:
 		paths:
 			- "backend/**"
 			- ".github/workflows/backend-ci.yaml"
-	workflow_dispatch:
+	workflow_dispatch: 
 
 defaults:
 	run:
