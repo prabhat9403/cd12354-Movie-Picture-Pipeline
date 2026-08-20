@@ -1,77 +1,77 @@
 name: Frontend CI
 
 on:
-	pull_request:
-		branches:
-			- main
-		paths: 
-			- "frontend/**"
-			- ".github/workflows/frontend-ci.yaml"
-	workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "starter/frontend/**"
+      - ".github/workflows/frontend-ci.yaml"
+  workflow_dispatch:
 
 defaults:
-	run:
-		working-directory: frontend
+  run:
+    working-directory: starter/frontend
 
 jobs:
-	lint:
-		runs-on: ubuntu-latest
-		steps:
-			- name: Checkout repository
-				uses: actions/checkout@v4
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-			- name: Set up Node.js
-				uses: actions/setup-node@v4
-				with:
-					node-version: 18
-					cache: npm
-					cache-dependency-path: frontend/package-lock.json
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: starter/frontend/package-lock.json
 
-			- name: Install dependencies
-				run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-			- name: Run linter
-				run: npm run lint
+      - name: Run linter
+        run: npm run lint
 
-	test:
-		runs-on: ubuntu-latest
-		steps:
-			- name: Checkout repository
-				uses: actions/checkout@v4
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-			- name: Set up Node.js
-				uses: actions/setup-node@v4
-				with:
-					node-version: 18
-					cache: npm
-					cache-dependency-path: frontend/package-lock.json
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: starter/frontend/package-lock.json
 
-			- name: Install dependencies
-				run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-			- name: Run tests
-				run: npm test -- --watchAll=false
-				env:
-					CI: true
+      - name: Run tests
+        run: npm test -- --watchAll=false
+        env:
+          CI: true
 
-	build:
-		needs:
-			- lint
-			- test
-		runs-on: ubuntu-latest
-		steps:
-			- name: Checkout repository
-				uses: actions/checkout@v4
+  build:
+    needs:
+      - lint
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-			- name: Set up Node.js
-				uses: actions/setup-node@v4
-				with:
-					node-version: 18
-					cache: npm
-					cache-dependency-path: frontend/package-lock.json
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: starter/frontend/package-lock.json
 
-			- name: Install dependencies
-				run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-			- name: Build application
-				run: npm run build
+      - name: Build application
+        run: npm run build
