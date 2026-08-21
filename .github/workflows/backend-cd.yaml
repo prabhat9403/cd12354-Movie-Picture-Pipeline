@@ -82,7 +82,6 @@ jobs:
           aws sts get-caller-identity
           echo "Region: $AWS_REGION"
           echo "Cluster: $EKS_CLUSTER_NAME"
-          aws eks list-clusters
       - name: Configure kubectl
         run: aws eks update-kubeconfig --region "$AWS_REGION" --name "$EKS_CLUSTER_NAME
       - name: Configure kubectl
