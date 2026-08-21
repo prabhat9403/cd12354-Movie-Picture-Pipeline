@@ -77,14 +77,8 @@ jobs:
         with:
           version: latest
       - uses: imranismail/setup-kustomize@v2
-      - name: Debug AWS Identity
-        run: |
-          aws sts get-caller-identity
-          echo "Region: $AWS_REGION"
-          echo "Cluster: $EKS_CLUSTER_NAME"
-      - name: Who am I
-        run: |
-          aws sts get-caller-identity
+      - name: Check AWS Identity
+        run: aws sts get-caller-identity
       - name: Configure kubectl
         run: aws eks update-kubeconfig --region "$AWS_REGION" --name "$EKS_CLUSTER_NAME"
       - name: Deploy backend
