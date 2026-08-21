@@ -4,11 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-# Remove: uwsgi
-# Add:
-gunicorn = "*"
 flask = "*"
-# ... other dependencies
+uwsgi = "*"
+flask-cors = "*"
+pytest = "*"
 
 [dev-packages]
 black = "*"

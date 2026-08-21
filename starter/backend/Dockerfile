@@ -20,6 +20,3 @@ COPY Pipfile* /app
 RUN cd /app && pipenv install --system --deploy
 
 COPY . /app
-
-# Use Gunicorn instead of uWSGI
-CMD gunicorn --bind 0.0.0.0:5000 --workers 4 app:app
