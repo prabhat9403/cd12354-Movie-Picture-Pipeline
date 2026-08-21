@@ -6,7 +6,7 @@ RUN apt-get update && \
   apt-get install -y --no-install-recommends \
   build-essential \
   libffi-dev \
-  libpcre3-dev \
+  libpcre2-dev \
   && rm -rf /var/lib/apt/lists/* \
   && pip install pipenv
 
