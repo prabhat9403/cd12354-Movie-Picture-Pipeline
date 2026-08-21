@@ -83,7 +83,7 @@ jobs:
           echo "Region: $AWS_REGION"
           echo "Cluster: $EKS_CLUSTER_NAME"
       - name: Configure kubectl
-        run: aws eks update-kubeconfig --region "$AWS_REGION" --name "$EKS_CLUSTER_NAME
+        run: aws eks update-kubeconfig --region "$AWS_REGION" --name "$EKS_CLUSTER_NAME"
       - name: Configure kubectl
         run: aws eks update-kubeconfig --region "$AWS_REGION" --name "$EKS_CLUSTER_NAME"
       - name: Deploy backend
